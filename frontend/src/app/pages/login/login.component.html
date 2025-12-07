@@ -1,1 +1,73 @@
-<p>login works!</p>
+<div class="container">
+  <div class="login-container">
+    <div class="login-header">
+      <div class="logo-container">
+        <i data-feather="trello" class="logo-icon"></i>
+      </div>
+      <h1>Kanban</h1>
+      <p>Organize suas tarefas com eficiência e estilo</p>
+    </div>
+
+    <div class="login-body">
+      <h2 class="form-title">Bem-vindo de volta</h2>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="input-group">
+          <label class="input-label" for="email">Email</label>
+          <div class="input-wrapper">
+            <input
+              type="email"
+              id="email"
+              class="input-field"
+              placeholder="seu@email.com"
+              formControlName="email"
+            />
+            <i data-feather="mail" class="input-icon"></i>
+          </div>
+
+          <div class="error-message" *ngIf="email?.invalid && email?.touched">
+            <span *ngIf="email?.errors?.['required']"
+              >O email é obrigatório.</span
+            >
+            <span *ngIf="email?.errors?.['email']">Email inválido.</span>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label class="input-label" for="password">Senha</label>
+          <div class="input-wrapper">
+            <input
+              type="password"
+              id="password"
+              class="input-field"
+              placeholder="••••••••"
+              formControlName="password"
+            />
+            <i data-feather="lock" class="input-icon"></i>
+          </div>
+
+          <div
+            class="error-message"
+            *ngIf="password?.invalid && password?.touched"
+          >
+            <span *ngIf="password?.errors?.['required']"
+              >A senha é obrigatória.</span
+            >
+            <span *ngIf="password?.errors?.['minlength']">
+              A senha deve ter pelo menos 6 caracteres.
+            </span>
+          </div>
+        </div>
+
+        <button type="submit" class="login-button" [disabled]="form.invalid">
+          <i data-feather="log-in"></i>
+          <span>Entrar</span>
+        </button>
+      </form>
+
+      <div class="signup-link">
+        Não tem uma conta? <a href="#">Cadastre-se grátis</a>
+      </div>
+    </div>
+  </div>
+</div>
