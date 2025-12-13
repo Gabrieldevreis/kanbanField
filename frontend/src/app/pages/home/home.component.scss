@@ -1,0 +1,19 @@
+.container {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  background: #f5f7fa;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+    display: flex;      
+    height: calc(100vh - 70px); 
+}
+
+.main-content {
+    flex: 1;              
+    padding: 16px;
+    background-color: aqua;
+}
