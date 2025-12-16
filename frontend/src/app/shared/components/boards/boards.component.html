@@ -1,1 +1,168 @@
-<p>boards works!</p>
+<div id="projectsView" class="hidden">
+  <div class="projects-header">
+    <div>
+      <h1 class="page-title">Meus Projetos</h1>
+      <p class="page-subtitle">Organize e gerencie todos os seus projetos</p>
+    </div>
+    <button class="btn-new-project" onclick="openProjectModal()">
+      + Novo Projeto
+    </button>
+  </div>
+
+  <div class="projects-filter">
+    <button class="filter-btn active" onclick="filterProjects('all')">
+      Todos
+    </button>
+    <button class="filter-btn" onclick="filterProjects('active')">
+      Ativos
+    </button>
+    <button class="filter-btn" onclick="filterProjects('completed')">
+      Concluídos
+    </button>
+  </div>
+
+  <div class="projects-grid" id="projectsGrid">
+    <!-- Projeto 1 -->
+    <div class="project-card color-purple" onclick="showDashboard()">
+      <div class="project-icon">💼</div>
+      <h3 class="project-title">Sistema de Gestão</h3>
+      <p class="project-description">
+        Desenvolvimento de plataforma completa para gestão empresarial
+      </p>
+      <div class="project-stats">
+        <div class="stat-item">
+          <span>📋</span>
+          <span>8 tarefas</span>
+        </div>
+        <div class="stat-item">
+          <span>✅</span>
+          <span>60% completo</span>
+        </div>
+      </div>
+      <div class="project-members">
+        <div class="member-avatar">JD</div>
+        <div class="member-avatar">MS</div>
+        <div class="member-avatar">AK</div>
+        <span class="member-count">+2</span>
+      </div>
+    </div>
+
+    <!-- Projeto 2 -->
+    <div class="project-card color-green">
+      <div class="project-icon">🎨</div>
+      <h3 class="project-title">Redesign UI/UX</h3>
+      <p class="project-description">
+        Renovação completa da interface do aplicativo mobile
+      </p>
+      <div class="project-stats">
+        <div class="stat-item">
+          <span>📋</span>
+          <span>12 tarefas</span>
+        </div>
+        <div class="stat-item">
+          <span>✅</span>
+          <span>45% completo</span>
+        </div>
+      </div>
+      <div class="project-members">
+        <div class="member-avatar">LC</div>
+        <div class="member-avatar">PM</div>
+      </div>
+    </div>
+
+    <!-- Projeto 3 -->
+    <div class="project-card color-orange">
+      <div class="project-icon">🚀</div>
+      <h3 class="project-title">Lançamento do Produto</h3>
+      <p class="project-description">
+        Campanha de marketing e lançamento da versão 2.0
+      </p>
+      <div class="project-stats">
+        <div class="stat-item">
+          <span>📋</span>
+          <span>15 tarefas</span>
+        </div>
+        <div class="stat-item">
+          <span>✅</span>
+          <span>30% completo</span>
+        </div>
+      </div>
+      <div class="project-members">
+        <div class="member-avatar">RB</div>
+        <div class="member-avatar">TG</div>
+        <div class="member-avatar">NK</div>
+        <div class="member-avatar">WL</div>
+      </div>
+    </div>
+
+    <!-- Projeto 4 -->
+    <div class="project-card color-blue">
+      <div class="project-icon">📱</div>
+      <h3 class="project-title">App Mobile</h3>
+      <p class="project-description">
+        Desenvolvimento do aplicativo iOS e Android
+      </p>
+      <div class="project-stats">
+        <div class="stat-item">
+          <span>📋</span>
+          <span>20 tarefas</span>
+        </div>
+        <div class="stat-item">
+          <span>✅</span>
+          <span>75% completo</span>
+        </div>
+      </div>
+      <div class="project-members">
+        <div class="member-avatar">DF</div>
+        <div class="member-avatar">KJ</div>
+      </div>
+    </div>
+
+    <!-- Projeto 5 -->
+    <div class="project-card color-pink">
+      <div class="project-icon">📊</div>
+      <h3 class="project-title">Analytics Dashboard</h3>
+      <p class="project-description">
+        Sistema de análise de dados e métricas em tempo real
+      </p>
+      <div class="project-stats">
+        <div class="stat-item">
+          <span>📋</span>
+          <span>10 tarefas</span>
+        </div>
+        <div class="stat-item">
+          <span>✅</span>
+          <span>50% completo</span>
+        </div>
+      </div>
+      <div class="project-members">
+        <div class="member-avatar">HM</div>
+        <div class="member-avatar">SL</div>
+        <div class="member-avatar">CN</div>
+      </div>
+    </div>
+
+    <!-- Projeto 6 -->
+    <div class="project-card color-purple">
+      <div class="project-icon">🔒</div>
+      <h3 class="project-title">Sistema de Segurança</h3>
+      <p class="project-description">
+        Implementação de autenticação e criptografia
+      </p>
+      <div class="project-stats">
+        <div class="stat-item">
+          <span>📋</span>
+          <span>6 tarefas</span>
+        </div>
+        <div class="stat-item">
+          <span>✅</span>
+          <span>90% completo</span>
+        </div>
+      </div>
+      <div class="project-members">
+        <div class="member-avatar">VT</div>
+        <div class="member-avatar">BR</div>
+      </div>
+    </div>
+  </div>
+</div>

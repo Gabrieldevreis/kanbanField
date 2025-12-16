@@ -1,1 +1,60 @@
-<p>calendar works!</p>
+<div id="calendarView" class="hidden">
+  <div class="calendar-header">
+    <div>
+      <h1 class="page-title">Calendário</h1>
+      <p class="page-subtitle">Visualize e gerencie seus eventos e prazos</p>
+    </div>
+    <button class="btn-new-project" onclick="openEventModal()">
+      + Novo Evento
+    </button>
+  </div>
+
+  <div class="calendar-layout">
+    <div>
+      <div class="calendar-container">
+        <div class="calendar-nav">
+          <button onclick="previousMonth()">‹</button>
+          <div class="calendar-month" id="currentMonth">Novembro 2024</div>
+          <button onclick="nextMonth()">›</button>
+          <button onclick="goToToday()">Hoje</button>
+        </div>
+      </div>
+
+      <div class="calendar-container" style="margin-top: 1.5rem">
+        <div class="calendar-weekdays">
+          <div class="weekday">Dom</div>
+          <div class="weekday">Seg</div>
+          <div class="weekday">Ter</div>
+          <div class="weekday">Qua</div>
+          <div class="weekday">Qui</div>
+          <div class="weekday">Sex</div>
+          <div class="weekday">Sáb</div>
+        </div>
+        <div class="calendar-days" id="calendarDays"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="calendar-sidebar">
+        <h3 class="sidebar-section-title">Próximos Eventos</h3>
+        <div id="upcomingEvents">
+          <div class="upcoming-event">
+            <div class="event-time">Hoje • 14:00</div>
+            <div class="event-title">Reunião de Sprint</div>
+            <div class="event-description">Review semanal do progresso</div>
+          </div>
+          <div class="upcoming-event event-green">
+            <div class="event-time">Amanhã • 10:00</div>
+            <div class="event-title">Workshop de Design</div>
+            <div class="event-description">Técnicas avançadas de UI/UX</div>
+          </div>
+          <div class="upcoming-event event-orange">
+            <div class="event-time">02 Dez • 15:30</div>
+            <div class="event-title">Apresentação Cliente</div>
+            <div class="event-description">Demo da versão 2.0</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
