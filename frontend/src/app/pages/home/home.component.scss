@@ -8,12 +8,12 @@
 }
 
 .content {
-    display: flex;      
-    height: calc(100vh - 70px); 
+  display: flex;
+  height: calc(100vh - 70px);
 }
 
 .main-content {
-    flex: 1;              
-    padding: 16px;
-    background-color: aqua;
+  flex: 1;
+  padding: 3rem;
+  overflow-y: auto;
 }
