@@ -14,6 +14,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { CalendarComponent } from './shared/components/calendar/calendar.component';
 import { HeaderComponent } from './shared/components/header/header.component'
 import { HomeComponent } from './pages/home/home.component';
+import { ModalBoardsComponent } from './shared/components/modal-boards/modal-boards.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { HomeComponent } from './pages/home/home.component';
     FooterComponent,
     CalendarComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    ModalBoardsComponent
   ],
   imports: [
     BrowserModule,
