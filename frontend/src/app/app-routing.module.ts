@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
-import { KanbanComponent } from './shared/components/kanban/kanban.component';
 import { CalendarComponent } from './shared/components/calendar/calendar.component';
 import { ConfigurationsComponent } from './shared/components/configurations/configurations.component';
 import { BoardsComponent } from './shared/components/boards/boards.component';
@@ -27,15 +26,11 @@ const routes: Routes = [
     component:HomeComponent,
     children:[
       {
-        path:'initial',
-        component:KanbanComponent
-      },
-      {
         path:'calendar',
         component:CalendarComponent
       },
       {
-        path:'configuration',
+        path:'configurations',
         component:ConfigurationsComponent
       },
       {

@@ -9,7 +9,6 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { SiderbarComponent } from './shared/components/siderbar/siderbar.component';
 import { BoardsComponent } from './shared/components/boards/boards.component';
-import { KanbanComponent } from './shared/components/kanban/kanban.component';
 import { ConfigurationsComponent } from './shared/components/configurations/configurations.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { CalendarComponent } from './shared/components/calendar/calendar.component';
@@ -23,7 +22,6 @@ import { HomeComponent } from './pages/home/home.component';
     RegisterComponent,
     SiderbarComponent,
     BoardsComponent,
-    KanbanComponent,
     ConfigurationsComponent,
     FooterComponent,
     CalendarComponent,
