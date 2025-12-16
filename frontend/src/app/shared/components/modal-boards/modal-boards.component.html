@@ -1,0 +1,114 @@
+<div class="modal-overlay" *ngIf="isOpen" (click)="closeModal()">
+  <div class="modal" (click)="$event.stopPropagation()">
+    <!-- Header -->
+    <div class="modal-header">
+      <h2>Criar Novo Board</h2>
+      <button class="close-btn" (click)="closeModal()">×</button>
+    </div>
+
+    <!-- Body -->
+    <div class="modal-body">
+      <form [formGroup]="form">
+        <!-- Ícone -->
+        <div class="form-group">
+          <label>Ícone do Board</label>
+          <div class="icon-picker">
+            <div
+              *ngFor="let icon of icons"
+              class="icon-option"
+              [class.selected]="icon === selectedIcon"
+              (click)="selectIcon(icon)"
+            >
+              {{ icon }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Nome -->
+        <div class="form-group">
+          <label>Nome do Board *</label>
+          <input
+            type="text"
+            formControlName="name"
+            placeholder="Ex: Sistema de Gestão"
+          />
+        </div>
+
+        <!-- Descrição -->
+        <div class="form-group">
+          <label>Descrição</label>
+          <textarea
+            formControlName="description"
+            placeholder="Descrição do board"
+          ></textarea>
+        </div>
+
+        <!-- Tarefas / Progresso -->
+        <div class="form-row">
+          <div class="form-group">
+            <label>Número de Tarefas</label>
+            <input type="number" formControlName="tasks" />
+          </div>
+
+          <div class="form-group">
+            <label>Progresso (%)</label>
+            <input type="number" formControlName="progress" />
+          </div>
+        </div>
+
+        <!-- Tipo -->
+        <div class="form-group">
+          <label>Tipo de Board</label>
+          <select formControlName="type">
+            <option value="scrum">Scrum</option>
+            <option value="kanban">Kanban</option>
+            <option value="custom">Personalizado</option>
+          </select>
+        </div>
+
+        <!-- Membros -->
+        <div class="form-group">
+          <label>Membros</label>
+          <div class="members-input-container">
+            <input #memberInput maxlength="2" placeholder="JP" />
+            <button type="button" (click)="addMember(memberInput)">
+              + Adicionar
+            </button>
+          </div>
+
+          <div class="members-list">
+            <span
+              class="member-avatar"
+              *ngFor="let member of members; let i = index"
+              (click)="removeMember(i)"
+            >
+              {{ member }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Cores -->
+        <div class="form-group">
+          <label>Cor do Board</label>
+          <div class="color-picker">
+            <div
+              *ngFor="let color of colors"
+              class="color-option"
+              [style.background]="color"
+              [class.selected]="color === selectedColor"
+              (click)="selectColor(color)"
+            ></div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Footer -->
+    <div class="modal-footer">
+      <button class="btn btn-cancel" (click)="closeModal()">Cancelar</button>
+      <button class="btn btn-create" (click)="createBoard()">
+        Criar Board
+      </button>
+    </div>
+  </div>
+</div>
