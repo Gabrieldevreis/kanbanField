@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Project } from '../../interfaces/projects.interface';
 
 @Component({
   selector: 'app-modal-boards',
@@ -9,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ModalBoardsComponent {
   @Input() isOpen = false;
   @Output() close = new EventEmitter<void>();
-  @Output() create = new EventEmitter<any>();
+  @Output() create = new EventEmitter<Project>();
 
   form: FormGroup;
 
@@ -77,16 +78,22 @@ export class ModalBoardsComponent {
   }
 
   createBoard(): void {
-    if (this.form.invalid) return;
+  if (this.form.invalid) return;
 
-    const board = {
-      ...this.form.value,
-      icon: this.selectedIcon,
-      color: this.selectedColor,
-      members: this.members,
-    };
+  const project: Project = {
+    title: this.form.value.name,
+    description: this.form.value.description,
+    icon: this.selectedIcon,
+    tasks: this.form.value.tasks,
+    progress: this.form.value.progress,
+    members: this.members,
+    color: this.selectedColor,
 
-    this.create.emit(board);
-    this.closeModal();
-  }
+    // regra simples: se não estiver 100%, é ativo
+    status: this.form.value.progress === 100 ? 'completed' : 'active'
+  };
+
+  this.create.emit(project);
+  this.closeModal();
+}
 }
