@@ -98,8 +98,7 @@ export class BoardsComponent {
     this.isCreateBoardModalOpen = false;
   }
 
-  onCreateBoard(board: any): void {
-    console.log('Board criado:', board);
-    // aqui você pode dar push na lista ou enviar para API
+  onCreateBoard(project: Project): void {
+    this.projects = [project, ...this.projects];
   }
 }
