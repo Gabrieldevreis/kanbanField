@@ -43,37 +43,24 @@
           ></textarea>
         </div>
 
-        <!-- Tarefas / Progresso -->
-        <div class="form-row">
-          <div class="form-group">
-            <label>Número de Tarefas</label>
-            <input type="number" formControlName="tasks" />
-          </div>
-
-          <div class="form-group">
-            <label>Progresso (%)</label>
-            <input type="number" formControlName="progress" />
-          </div>
-        </div>
-
         <!-- Tipo -->
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label>Tipo de Board</label>
           <select formControlName="type">
             <option value="scrum">Scrum</option>
             <option value="kanban">Kanban</option>
             <option value="custom">Personalizado</option>
           </select>
-        </div>
+        </div> -->
 
         <!-- Membros -->
         <div class="form-group">
           <label>Membros</label>
           <div class="members-input-container">
             <input #memberInput maxlength="2" placeholder="JP" />
-            <button type="button" (click)="addMember(memberInput)">
+            <!-- <button type="button" (click)="addMember(memberInput)">
               + Adicionar
-            </button>
+            </button> -->
           </div>
 
           <div class="members-list">

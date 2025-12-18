@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Project, ProjectStatus } from '../../interfaces/projects.interface';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-boards',
@@ -14,7 +15,7 @@ export class BoardsComponent {
       title: 'Sistema de Gestão',
       description:
         'Desenvolvimento de plataforma completa para gestão empresarial',
-      icon: '💼',
+      icon: 'fa-briefcase',
       tasks: 8,
       progress: 60,
       members: ['JD', 'MS', 'AK', '+2'],
@@ -24,7 +25,7 @@ export class BoardsComponent {
     {
       title: 'Redesign UI/UX',
       description: 'Renovação completa da interface do aplicativo mobile',
-      icon: '🎨',
+      icon: 'fa-briefcase',
       tasks: 12,
       progress: 45,
       members: ['LC', 'PM'],
@@ -34,7 +35,7 @@ export class BoardsComponent {
     {
       title: 'Lançamento do Produto',
       description: 'Campanha de marketing e lançamento da versão 2.0',
-      icon: '🚀',
+      icon: 'fa-briefcase',
       tasks: 15,
       progress: 30,
       members: ['RB', 'TG', 'NK', 'WL'],
@@ -44,7 +45,7 @@ export class BoardsComponent {
     {
       title: 'App Mobile',
       description: 'Desenvolvimento do aplicativo iOS e Android',
-      icon: '📱',
+      icon: 'fa-briefcase',
       tasks: 20,
       progress: 75,
       members: ['DF', 'KJ'],
@@ -54,7 +55,7 @@ export class BoardsComponent {
     {
       title: 'Analytics Dashboard',
       description: 'Sistema de análise de dados e métricas em tempo real',
-      icon: '📊',
+      icon: 'fa-briefcase',
       tasks: 10,
       progress: 50,
       members: ['HM', 'SL', 'CN'],
@@ -64,7 +65,7 @@ export class BoardsComponent {
     {
       title: 'Sistema de Segurança',
       description: 'Implementação de autenticação e criptografia',
-      icon: '🔒',
+      icon: 'fa-briefcase',
       tasks: 6,
       progress: 90,
       members: ['VT', 'BR'],

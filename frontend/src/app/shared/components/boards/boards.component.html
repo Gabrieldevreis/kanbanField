@@ -50,7 +50,8 @@
       [ngClass]="project.color"
       (click)="showDashboard(project)"
     >
-      <div class="project-icon">{{ project.icon }}</div>
+      <div class="project-icon"><i class="fa-solid" [ngClass]="project.icon"></i>
+</div>
 
       <h3 class="project-title">{{ project.title }}</h3>
 
@@ -60,11 +61,11 @@
 
       <div class="project-stats">
         <div class="stat-item">
-          <span>📋</span>
+          <span><i class="fa-solid fa-list-check"></i></span>
           <span>{{ project.tasks }} tarefas</span>
         </div>
         <div class="stat-item">
-          <span>✅</span>
+          <span><i class="fa-solid fa-square-check"></i></span>
           <span>{{ project.progress }}% completo</span>
         </div>
       </div>

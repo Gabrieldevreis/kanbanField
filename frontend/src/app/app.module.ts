@@ -12,13 +12,13 @@ import { BoardsComponent } from './shared/components/boards/boards.component';
 import { ConfigurationsComponent } from './shared/components/configurations/configurations.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { CalendarComponent } from './shared/components/calendar/calendar.component';
-import { HeaderComponent } from './shared/components/header/header.component'
+import { HeaderComponent } from './shared/components/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ModalBoardsComponent } from './shared/components/modal-boards/modal-boards.component';
 
 @NgModule({
   declarations: [
-    AppComponent,   
+    AppComponent,
     LoginComponent,
     RegisterComponent,
     SiderbarComponent,
@@ -28,14 +28,14 @@ import { ModalBoardsComponent } from './shared/components/modal-boards/modal-boa
     CalendarComponent,
     HeaderComponent,
     HomeComponent,
-    ModalBoardsComponent
+    ModalBoardsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
