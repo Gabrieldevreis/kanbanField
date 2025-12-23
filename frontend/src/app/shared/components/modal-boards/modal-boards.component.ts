@@ -15,19 +15,22 @@ export class ModalBoardsComponent {
   form: FormGroup;
 
   icons = [
-    '💼',
-    '📊',
-    '🎯',
-    '🚀',
-    '💻',
-    '📱',
-    '🎨',
-    '📈',
-    '⚙️',
-    '🏆',
-    '📝',
-    '🔧',
-  ];
+  'fa-briefcase',
+  'fa-chart-column',
+  'fa-bullseye',
+  'fa-rocket',
+  'fa-code',
+  'fa-mobile-screen',
+  'fa-paintbrush',
+  'fa-chart-line',
+  'fa-gear',
+  'fa-trophy',
+  'fa-file-lines',
+  'fa-screwdriver-wrench',
+];
+
+
+
   colors = [
     '#667eea',
     '#f093fb',
@@ -41,7 +44,7 @@ export class ModalBoardsComponent {
 
   members: string[] = [];
 
-  selectedIcon = '💼';
+  selectedIcon = 'fa-briefcase';
   selectedColor = '#667eea';
 
   constructor(private fb: FormBuilder) {

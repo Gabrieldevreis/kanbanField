@@ -19,7 +19,7 @@
               [class.selected]="icon === selectedIcon"
               (click)="selectIcon(icon)"
             >
-              {{ icon }}
+              <i class="fa-solid" [ngClass]="icon"></i>
             </div>
           </div>
         </div>
