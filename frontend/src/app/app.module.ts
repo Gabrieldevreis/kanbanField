@@ -15,6 +15,7 @@ import { CalendarComponent } from './shared/components/calendar/calendar.compone
 import { HeaderComponent } from './shared/components/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ModalBoardsComponent } from './shared/components/modal-boards/modal-boards.component';
+import { KanbanComponent } from './shared/components/kanban/kanban.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ModalBoardsComponent } from './shared/components/modal-boards/modal-boa
     HeaderComponent,
     HomeComponent,
     ModalBoardsComponent,
+    KanbanComponent,
   ],
   imports: [
     BrowserModule,

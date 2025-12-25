@@ -49,9 +49,11 @@
       *ngFor="let project of filteredProjects"
       [ngClass]="project.color"
       (click)="showDashboard(project)"
+      routerLink="/kanban"
     >
-      <div class="project-icon"><i class="fa-solid" [ngClass]="project.icon"></i>
-</div>
+      <div class="project-icon">
+        <i class="fa-solid" [ngClass]="project.icon"></i>
+      </div>
 
       <h3 class="project-title">{{ project.title }}</h3>
 

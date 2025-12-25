@@ -7,6 +7,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { CalendarComponent } from './shared/components/calendar/calendar.component';
 import { ConfigurationsComponent } from './shared/components/configurations/configurations.component';
 import { BoardsComponent } from './shared/components/boards/boards.component';
+import { KanbanComponent } from './shared/components/kanban/kanban.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
       {
         path:'boards',
         component:BoardsComponent
+      },
+      {
+        path:'kanban',
+        component:KanbanComponent
       }
     ]
   }

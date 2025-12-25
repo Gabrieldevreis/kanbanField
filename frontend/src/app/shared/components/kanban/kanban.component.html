@@ -1,0 +1,141 @@
+<main class="home-content">
+  <!-- Dashboard View -->
+  <div id="dashboardView">
+    <div class="page-header">
+      <h1 class="page-title">Meu Projeto</h1>
+      <p class="page-subtitle">Gerencie suas tarefas de forma eficiente</p>
+    </div>
+
+    <!-- Kanban Board -->
+    <div class="kanban-board" id="kanbanBoard">
+      <!-- Coluna: A Fazer -->
+      <div class="kanban-column">
+        <div class="column-header">
+          <div class="column-title">📝 A Fazer</div>
+          <span class="column-count">3</span>
+        </div>
+        <div class="card priority-high">
+          <div class="card-title">Revisar documentação</div>
+          <div class="card-description">
+            Atualizar a documentação do projeto com as novas features
+          </div>
+          <div class="card-footer">
+            <div class="card-tags">
+              <span class="tag">docs</span>
+            </div>
+            <span>📅 Hoje</span>
+          </div>
+        </div>
+        <div class="card priority-medium">
+          <div class="card-title">Design da landing page</div>
+          <div class="card-description">Criar mockups da nova landing page</div>
+          <div class="card-footer">
+            <div class="card-tags">
+              <span class="tag">design</span>
+            </div>
+            <span>📅 Amanhã</span>
+          </div>
+        </div>
+        <div class="card priority-low">
+          <div class="card-title">Pesquisa de mercado</div>
+          <div class="card-description">Analisar concorrentes</div>
+          <div class="card-footer">
+            <div class="card-tags">
+              <span class="tag">research</span>
+            </div>
+            <span>📅 Próx. semana</span>
+          </div>
+        </div>
+        <button class="add-card-btn">+ Nova Tarefa</button>
+      </div>
+
+      <!-- Coluna: Em Progresso -->
+      <div class="kanban-column">
+        <div class="column-header">
+          <div class="column-title">⚡ Em Progresso</div>
+          <span class="column-count">2</span>
+        </div>
+        <div class="card priority-high">
+          <div class="card-title">Implementar autenticação</div>
+          <div class="card-description">
+            Adicionar sistema de login e registro
+          </div>
+          <div class="card-footer">
+            <div class="card-tags">
+              <span class="tag">backend</span>
+            </div>
+            <span>📅 Em andamento</span>
+          </div>
+        </div>
+        <div class="card priority-medium">
+          <div class="card-title">Testes de usabilidade</div>
+          <div class="card-description">Realizar testes com usuários reais</div>
+          <div class="card-footer">
+            <div class="card-tags">
+              <span class="tag">ux</span>
+            </div>
+            <span>📅 Esta semana</span>
+          </div>
+        </div>
+        <button class="add-card-btn">+ Nova Tarefa</button>
+      </div>
+
+      <!-- Coluna: Em Revisão -->
+      <div class="kanban-column">
+        <div class="column-header">
+          <div class="column-title">👀 Em Revisão</div>
+          <span class="column-count">1</span>
+        </div>
+        <div class="card priority-medium">
+          <div class="card-title">API de pagamentos</div>
+          <div class="card-description">
+            Integração com gateway de pagamento
+          </div>
+          <div class="card-footer">
+            <div class="card-tags">
+              <span class="tag">backend</span>
+            </div>
+            <span>📅 Aguardando</span>
+          </div>
+        </div>
+        <button class="add-card-btn">+ Nova Tarefa</button>
+      </div>
+
+      <!-- Coluna: Concluído -->
+      <div class="kanban-column">
+        <div class="column-header">
+          <div class="column-title">✅ Concluído</div>
+          <span class="column-count">2</span>
+        </div>
+        <div class="card priority-low">
+          <div class="card-title">Setup do projeto</div>
+          <div class="card-description">
+            Configuração inicial do repositório
+          </div>
+          <div class="card-footer">
+            <div class="card-tags">
+              <span class="tag">setup</span>
+            </div>
+            <span>✓ Completo</span>
+          </div>
+        </div>
+        <div class="card priority-low">
+          <div class="card-title">Definir paleta de cores</div>
+          <div class="card-description">Escolher cores do brand</div>
+          <div class="card-footer">
+            <div class="card-tags">
+              <span class="tag">design</span>
+            </div>
+            <span>✓ Completo</span>
+          </div>
+        </div>
+        <button class="add-card-btn">+ Nova Tarefa</button>
+      </div>
+
+      <!-- Botão Adicionar Coluna -->
+      <div class="add-column-btn" onclick="openColumnModal()">
+        + Nova Coluna
+      </div>
+    </div>
+  </div>
+</main>
