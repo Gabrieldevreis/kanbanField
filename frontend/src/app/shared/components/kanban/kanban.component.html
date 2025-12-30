@@ -1,141 +1,127 @@
 <main class="home-content">
-  <!-- Dashboard View -->
-  <div id="dashboardView">
-    <div class="page-header">
-      <h1 class="page-title">Meu Projeto</h1>
-      <p class="page-subtitle">Gerencie suas tarefas de forma eficiente</p>
+  <div class="page-header">
+    <h1 class="page-title">Meu Projeto</h1>
+    <p class="page-subtitle">Gerencie suas tarefas de forma eficiente</p>
+  </div>
+
+  <div class="kanban-board">
+    <div class="kanban-column" *ngFor="let column of columns">
+      <div class="column-header">
+        <div class="column-title">{{ column.title }}</div>
+        <span class="column-count">{{ column.tasks.length }}</span>
+      </div>
+
+      <div
+        class="card"
+        *ngFor="let task of column.tasks"
+        [ngClass]="'priority-' + task.priority"
+      >
+        <div class="card-title">{{ task.title }}</div>
+
+        <div class="card-description">
+          {{ task.description }}
+        </div>
+
+        <div class="card-footer">
+          <div class="card-tags" *ngIf="task.tag">
+            <span class="tag">{{ task.tag }}</span>
+          </div>
+          <span>{{ task.footer }}</span>
+        </div>
+      </div>
+
+      <button class="add-card-btn" (click)="openTaskModal()">
+        + Nova Tarefa
+      </button>
     </div>
 
-    <!-- Kanban Board -->
-    <div class="kanban-board" id="kanbanBoard">
-      <!-- Coluna: A Fazer -->
-      <div class="kanban-column">
-        <div class="column-header">
-          <div class="column-title">📝 A Fazer</div>
-          <span class="column-count">3</span>
-        </div>
-        <div class="card priority-high">
-          <div class="card-title">Revisar documentação</div>
-          <div class="card-description">
-            Atualizar a documentação do projeto com as novas features
-          </div>
-          <div class="card-footer">
-            <div class="card-tags">
-              <span class="tag">docs</span>
-            </div>
-            <span>📅 Hoje</span>
-          </div>
-        </div>
-        <div class="card priority-medium">
-          <div class="card-title">Design da landing page</div>
-          <div class="card-description">Criar mockups da nova landing page</div>
-          <div class="card-footer">
-            <div class="card-tags">
-              <span class="tag">design</span>
-            </div>
-            <span>📅 Amanhã</span>
-          </div>
-        </div>
-        <div class="card priority-low">
-          <div class="card-title">Pesquisa de mercado</div>
-          <div class="card-description">Analisar concorrentes</div>
-          <div class="card-footer">
-            <div class="card-tags">
-              <span class="tag">research</span>
-            </div>
-            <span>📅 Próx. semana</span>
-          </div>
-        </div>
-        <button class="add-card-btn">+ Nova Tarefa</button>
-      </div>
+    <div class="modal" *ngIf="showTaskModal">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <h2 class="modal-header">Nova Tarefa</h2>
 
-      <!-- Coluna: Em Progresso -->
-      <div class="kanban-column">
-        <div class="column-header">
-          <div class="column-title">⚡ Em Progresso</div>
-          <span class="column-count">2</span>
-        </div>
-        <div class="card priority-high">
-          <div class="card-title">Implementar autenticação</div>
-          <div class="card-description">
-            Adicionar sistema de login e registro
+        <form>
+          <div class="form-group">
+            <label class="form-label">Título *</label>
+            <input type="text" class="form-input" />
           </div>
-          <div class="card-footer">
-            <div class="card-tags">
-              <span class="tag">backend</span>
-            </div>
-            <span>📅 Em andamento</span>
-          </div>
-        </div>
-        <div class="card priority-medium">
-          <div class="card-title">Testes de usabilidade</div>
-          <div class="card-description">Realizar testes com usuários reais</div>
-          <div class="card-footer">
-            <div class="card-tags">
-              <span class="tag">ux</span>
-            </div>
-            <span>📅 Esta semana</span>
-          </div>
-        </div>
-        <button class="add-card-btn">+ Nova Tarefa</button>
-      </div>
 
-      <!-- Coluna: Em Revisão -->
-      <div class="kanban-column">
-        <div class="column-header">
-          <div class="column-title">👀 Em Revisão</div>
-          <span class="column-count">1</span>
-        </div>
-        <div class="card priority-medium">
-          <div class="card-title">API de pagamentos</div>
-          <div class="card-description">
-            Integração com gateway de pagamento
+          <div class="form-group">
+            <label class="form-label">Descrição</label>
+            <textarea class="form-textarea"></textarea>
           </div>
-          <div class="card-footer">
-            <div class="card-tags">
-              <span class="tag">backend</span>
-            </div>
-            <span>📅 Aguardando</span>
-          </div>
-        </div>
-        <button class="add-card-btn">+ Nova Tarefa</button>
-      </div>
 
-      <!-- Coluna: Concluído -->
-      <div class="kanban-column">
-        <div class="column-header">
-          <div class="column-title">✅ Concluído</div>
-          <span class="column-count">2</span>
-        </div>
-        <div class="card priority-low">
-          <div class="card-title">Setup do projeto</div>
-          <div class="card-description">
-            Configuração inicial do repositório
+          <div class="form-group">
+            <label class="form-label">Prioridade</label>
+            <select class="form-select">
+              <option value="low">Baixa</option>
+              <option value="medium">Média</option>
+              <option value="high">Alta</option>
+            </select>
           </div>
-          <div class="card-footer">
-            <div class="card-tags">
-              <span class="tag">setup</span>
-            </div>
-            <span>✓ Completo</span>
-          </div>
-        </div>
-        <div class="card priority-low">
-          <div class="card-title">Definir paleta de cores</div>
-          <div class="card-description">Escolher cores do brand</div>
-          <div class="card-footer">
-            <div class="card-tags">
-              <span class="tag">design</span>
-            </div>
-            <span>✓ Completo</span>
-          </div>
-        </div>
-        <button class="add-card-btn">+ Nova Tarefa</button>
-      </div>
 
-      <!-- Botão Adicionar Coluna -->
-      <div class="add-column-btn" onclick="openColumnModal()">
-        + Nova Coluna
+          <div class="form-group">
+            <label class="form-label">Tag</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="ex: design, backend"
+            />
+          </div>
+
+          <div class="modal-actions">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="closeTaskModal()"
+            >
+              Cancelar
+            </button>
+
+            <button type="submit" class="btn btn-primary">Adicionar</button>
+          </div>
+        </form>
       </div>
     </div>
+
+    <div class="modal" *ngIf="showColumnModal" (click)="closeColumnModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <h2 class="modal-header">Nova Coluna</h2>
+
+        <form #columnForm="ngForm" (ngSubmit)="createColumn(columnName.value)">
+          <div class="form-group">
+            <label class="form-label">Nome da Coluna *</label>
+            <input
+              type="text"
+              class="form-input"
+              name="columnName"
+              #columnName="ngModel"
+              ngModel
+              required
+            />
+          </div>
+
+          <div class="modal-actions">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="closeColumnModal()"
+            >
+              Cancelar
+            </button>
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="columnForm.invalid"
+            >
+              Criar Coluna
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Nova Coluna -->
+    <div class="add-column-btn" (click)="openColumnModal()">+ Nova Coluna</div>
   </div>
 </main>
