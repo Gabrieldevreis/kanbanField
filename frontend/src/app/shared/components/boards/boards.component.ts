@@ -18,7 +18,7 @@ export class BoardsComponent {
       icon: 'fa-briefcase',
       tasks: 8,
       progress: 60,
-      members: ['JD', 'MS', 'AK', '+2'],
+      members: ['GR'],
       color: 'color-purple',
       status: 'active',
     },
