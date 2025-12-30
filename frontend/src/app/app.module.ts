@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { SiderbarComponent } from './shared/components/siderbar/siderbar.component';
@@ -16,6 +16,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ModalBoardsComponent } from './shared/components/modal-boards/modal-boards.component';
 import { KanbanComponent } from './shared/components/kanban/kanban.component';
+import { ModalEditTasksComponent } from './shared/components/modal-edit-tasks/modal-edit-tasks.component';
 
 @NgModule({
   declarations: [
@@ -31,11 +32,13 @@ import { KanbanComponent } from './shared/components/kanban/kanban.component';
     HomeComponent,
     ModalBoardsComponent,
     KanbanComponent,
+    ModalEditTasksComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
