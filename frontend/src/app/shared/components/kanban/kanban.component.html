@@ -15,6 +15,7 @@
         class="card"
         *ngFor="let task of column.tasks"
         [ngClass]="'priority-' + task.priority"
+        (click)="openEditTaskModal(task)"
       >
         <div class="card-title">{{ task.title }}</div>
 
@@ -123,5 +124,13 @@
 
     <!-- Nova Coluna -->
     <div class="add-column-btn" (click)="openColumnModal()">+ Nova Coluna</div>
+
+    <app-modal-edit-tasks
+      [isOpen]="isModalOpen"
+      [task]="selectedTask"
+      (close)="closeEditTaskModal()"
+      (save)="saveTask($event)"
+      (delete)="deleteTask()"
+    ></app-modal-edit-tasks>
   </div>
 </main>

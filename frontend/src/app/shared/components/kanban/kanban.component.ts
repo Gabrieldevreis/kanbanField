@@ -23,6 +23,8 @@ interface Column {
 export class KanbanComponent {
   showTaskModal = false;
   showColumnModal = false;
+  isModalOpen = false;
+  selectedTask: any = null;
 
   columns: Column[] = [
     {
@@ -127,4 +129,24 @@ export class KanbanComponent {
 
     this.closeColumnModal();
   }
+
+  openEditTaskModal(task: any) {
+    this.selectedTask = { ...task };
+    this.isModalOpen = true;
+  }
+
+  closeEditTaskModal() {
+  this.isModalOpen = false;
+  this.selectedTask = null;
+}
+
+saveTask(updatedTask: any) {
+  console.log('Salvar:', updatedTask);
+  this.isModalOpen = false;
+}
+
+deleteTask() {
+  console.log('Excluir task');
+  this.isModalOpen = false;
+}
 }
