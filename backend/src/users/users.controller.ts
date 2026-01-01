@@ -1,4 +1,14 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+import { CurrentUser } from '../auth/decorators/current-user.decorator';
 
 @Controller('users')
-export class UsersController {}
+export class UsersController {
+  @UseGuards(JwtAuthGuard)
+  @Get('me')
+  me(@CurrentUser() user) {
+    return user;
+  }
+}
+
+
