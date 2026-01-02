@@ -57,9 +57,9 @@
           </div>
         </div>
 
-        <button type="submit" class="login-button" [disabled]="form.invalid">
+        <button type="submit" class="login-button" [disabled]="isLoading">
           <i data-feather="log-in"></i>
-          <span>Entrar</span>
+          <span>{{ isLoading ? 'Entrando...' : 'Entrar' }}</span>
         </button>
       </form>
 

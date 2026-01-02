@@ -17,6 +17,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ModalBoardsComponent } from './shared/components/modal-boards/modal-boards.component';
 import { KanbanComponent } from './shared/components/kanban/kanban.component';
 import { ModalEditTasksComponent } from './shared/components/modal-edit-tasks/modal-edit-tasks.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ModalEditTasksComponent } from './shared/components/modal-edit-tasks/mo
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
