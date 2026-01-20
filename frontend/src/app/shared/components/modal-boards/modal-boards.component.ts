@@ -81,22 +81,53 @@ export class ModalBoardsComponent {
   }
 
   createBoard(): void {
-  if (this.form.invalid) return;
+    console.log('createBoard chamado, formulário válido:', this.form.valid);
+    console.log('Valores do formulário:', this.form.value);
+    
+    if (this.form.invalid) {
+      console.log('Formulário inválido, erros:', this.form.errors);
+      this.form.markAllAsTouched();
+      // Mostrar erros específicos
+      if (this.form.get('name')?.hasError('required')) {
+        alert('O nome do board é obrigatório.');
+      }
+      return;
+    }
 
-  const project: Project = {
-    title: this.form.value.name,
-    description: this.form.value.description,
-    icon: this.selectedIcon,
-    tasks: this.form.value.tasks,
-    progress: this.form.value.progress,
-    members: this.members,
-    color: this.selectedColor,
+    if (!this.form.value.name || !this.form.value.name.trim()) {
+      alert('O nome do board é obrigatório.');
+      return;
+    }
 
-    // regra simples: se não estiver 100%, é ativo
-    status: this.form.value.progress === 100 ? 'completed' : 'active'
-  };
+    const project: Project = {
+      title: this.form.value.name.trim(),
+      description: this.form.value.description || '',
+      icon: this.selectedIcon,
+      tasks: this.form.value.tasks || 0,
+      progress: this.form.value.progress || 0,
+      members: this.members,
+      color: this.selectedColor,
 
-  this.create.emit(project);
-  this.closeModal();
-}
+      // regra simples: se não estiver 100%, é ativo
+      status: this.form.value.progress === 100 ? 'completed' : 'active'
+    };
+
+    console.log('Projeto a ser criado:', project);
+    this.create.emit(project);
+    // Resetar formulário após emitir
+    this.resetForm();
+  }
+
+  resetForm(): void {
+    this.form.reset({
+      name: '',
+      description: '',
+      tasks: 0,
+      progress: 0,
+      type: 'scrum'
+    });
+    this.members = [];
+    this.selectedIcon = 'fa-briefcase';
+    this.selectedColor = '#667eea';
+  }
 }

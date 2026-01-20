@@ -7,10 +7,64 @@ generator client {
 }
 
 model User {
+  id              String          @id @default(uuid())
+  name            String
+  email           String          @unique
+  password        String
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  ownedProjects   Project[]
+  projectMembers  ProjectMember[]
+}
+
+model Project {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  icon        String
+  color       String
+  status      String   @default("active") // active | completed
+  ownerId     String
+  owner       User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  columns     Column[]
+  members     ProjectMember[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ProjectMember {
   id        String   @id @default(uuid())
-  name      String
-  email     String   @unique
-  password  String
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, projectId])
+}
+
+model Column {
+  id        String   @id @default(uuid())
+  title     String
+  order     Int      @default(0)
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  tasks     Task[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Task {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  priority    String   @default("medium") // low | medium | high
+  tag         String?
+  footer      String?
+  color       String?
+  columnId    String
+  column      Column   @relation(fields: [columnId], references: [id], onDelete: Cascade)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

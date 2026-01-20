@@ -1,0 +1,149 @@
+<main class="home-content">
+  <div class="page-header">
+    <h1 class="page-title">Meu Projeto</h1>
+    <p class="page-subtitle">Gerencie suas tarefas de forma eficiente</p>
+  </div>
+
+  <div class="kanban-board">
+    <div class="kanban-column" *ngFor="let column of columns">
+      <div class="column-header">
+        <div class="column-title">{{ column.title }}</div>
+        <span class="column-count">{{ column.tasks?.length || 0 }}</span>
+      </div>
+
+      <div
+        class="card"
+        *ngFor="let task of column.tasks"
+        [ngClass]="'priority-' + task.priority"
+        (click)="column.id ? openEditTaskModal(task, column.id) : null"
+      >
+        <div class="card-title">{{ task.title }}</div>
+
+        <div class="card-description">
+          {{ task.description }}
+        </div>
+
+        <div class="card-footer">
+          <div class="card-tags" *ngIf="task.tag">
+            <span class="tag">{{ task.tag }}</span>
+          </div>
+          <span>{{ task.footer }}</span>
+        </div>
+      </div>
+
+      <button class="add-card-btn" (click)="column.id ? openTaskModal(column.id) : null" [disabled]="!column.id">
+        + Nova Tarefa
+      </button>
+    </div>
+
+    <div class="modal" *ngIf="showTaskModal">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <h2 class="modal-header">Nova Tarefa</h2>
+
+        <form (ngSubmit)="createTask(newTask); $event.preventDefault()">
+          <div class="form-group">
+            <label class="form-label">Título *</label>
+            <input type="text" class="form-input" [(ngModel)]="newTask.title" name="title" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Descrição</label>
+            <textarea class="form-textarea" [(ngModel)]="newTask.description" name="description"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Prioridade</label>
+            <select class="form-select" [(ngModel)]="newTask.priority" name="priority">
+              <option value="low">Baixa</option>
+              <option value="medium">Média</option>
+              <option value="high">Alta</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Tag</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="ex: design, backend"
+              [(ngModel)]="newTask.tag"
+              name="tag"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Footer</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="ex: Hoje, Amanhã"
+              [(ngModel)]="newTask.footer"
+              name="footer"
+            />
+          </div>
+
+          <div class="modal-actions">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="closeTaskModal()"
+            >
+              Cancelar
+            </button>
+
+            <button type="submit" class="btn btn-primary" [disabled]="!newTask.title">Adicionar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal" *ngIf="showColumnModal" (click)="closeColumnModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <h2 class="modal-header">Nova Coluna</h2>
+
+        <form #columnForm="ngForm" (ngSubmit)="createColumn(columnName.value)">
+          <div class="form-group">
+            <label class="form-label">Nome da Coluna *</label>
+            <input
+              type="text"
+              class="form-input"
+              name="columnName"
+              #columnName="ngModel"
+              ngModel
+              required
+            />
+          </div>
+
+          <div class="modal-actions">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="closeColumnModal()"
+            >
+              Cancelar
+            </button>
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="columnForm.invalid"
+            >
+              Criar Coluna
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Nova Coluna -->
+    <div class="add-column-btn" (click)="openColumnModal()">+ Nova Coluna</div>
+
+    <app-modal-edit-tasks
+      [isOpen]="isModalOpen"
+      [task]="selectedTask"
+      (close)="closeEditTaskModal()"
+      (save)="saveTask($event)"
+      (delete)="deleteTask()"
+    ></app-modal-edit-tasks>
+  </div>
+</main>

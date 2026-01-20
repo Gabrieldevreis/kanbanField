@@ -34,15 +34,26 @@ export class AuthService {
         email: data.email,
         password: hashedPassword,
       },
-      select: {
-        id: true,
-        name: true,
-        email: true,
-        createdAt: true,
-      },
     });
 
-    return user;
+    // Gerar JWT token após registro
+    const payload = {
+      sub: user.id,
+      email: user.email,
+    };
+
+    const accessToken = await this.jwtService.signAsync(payload);
+
+    // Retornar no mesmo formato do login
+    return {
+      access_token: accessToken,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        createdAt: user.createdAt,
+      },
+    };
   }
 
   async login(data: LoginDto) {

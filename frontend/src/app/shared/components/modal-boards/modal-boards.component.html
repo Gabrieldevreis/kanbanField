@@ -31,7 +31,11 @@
             type="text"
             formControlName="name"
             placeholder="Ex: Sistema de Gestão"
+            [class.error]="form.get('name')?.invalid && form.get('name')?.touched"
           />
+          <div class="error-message" *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+            O nome do board é obrigatório.
+          </div>
         </div>
 
         <!-- Descrição -->
@@ -92,8 +96,8 @@
 
     <!-- Footer -->
     <div class="modal-footer">
-      <button class="btn btn-cancel" (click)="closeModal()">Cancelar</button>
-      <button class="btn btn-create" (click)="createBoard()">
+      <button type="button" class="btn btn-cancel" (click)="closeModal()">Cancelar</button>
+      <button type="button" class="btn btn-create" (click)="createBoard()" [disabled]="form.invalid">
         Criar Board
       </button>
     </div>

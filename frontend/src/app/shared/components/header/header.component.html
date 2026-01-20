@@ -1,8 +1,13 @@
 <header>
   <div class="header-content">
     <div class="logo"><img src="assets/icons/logo_header.svg" alt="Kanban" /></div>
-    <div class="header-actions">
-      <button class="btn-header"><i class="fa-solid fa-user"></i></button>
+    <div class="header-actions" *ngIf="isAuthenticated">
+      <div class="user-info" *ngIf="user">
+        <span class="user-name">{{ user.name }}</span>
+        <button class="btn-header" (click)="logout()" title="Sair">
+          <i class="fa-solid fa-sign-out-alt"></i>
+        </button>
+      </div>
     </div>
   </div>
 </header>
