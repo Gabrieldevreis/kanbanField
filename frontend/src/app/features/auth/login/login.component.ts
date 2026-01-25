@@ -73,7 +73,6 @@ export class LoginComponent implements OnInit, AfterViewInit {
     next: (response) => {
       localStorage.setItem('access_token', response.access_token);
       localStorage.setItem('user', JSON.stringify(response.user));
-      console.log('Usuário:', response.user);
 
       // Redirecionar para a URL que tentou acessar ou para /boards
       const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/boards';

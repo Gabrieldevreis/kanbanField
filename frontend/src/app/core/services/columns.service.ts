@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 export interface Column {
   id?: string;
@@ -30,7 +31,7 @@ export interface Task {
   providedIn: 'root'
 })
 export class ColumnsService {
-  private readonly API_URL = 'http://localhost:8001/projects';
+  private readonly API_URL = `${environment.apiUrl}/projects`;
 
   constructor(private http: HttpClient) {}
 

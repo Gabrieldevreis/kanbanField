@@ -89,10 +89,19 @@ export class BoardsComponent implements OnInit {
   }
 
   onCreateBoard(project: Project): void {
-    console.log('Criando board:', project);
-    
     if (!project.title || !project.title.trim()) {
       this.errorMessage = 'O nome do board é obrigatório.';
+      return;
+    }
+
+    // Verificar autenticação antes de criar
+    if (!this.authService.isAuthenticated()) {
+      this.errorMessage = 'Sua sessão expirou. Redirecionando para login...';
+      setTimeout(() => {
+        this.router.navigate(['/login'], {
+          queryParams: { returnUrl: '/boards', sessionExpired: 'true' }
+        });
+      }, 2000);
       return;
     }
 
@@ -107,12 +116,8 @@ export class BoardsComponent implements OnInit {
       status: project.status || 'active',
     };
 
-    console.log('Dados enviados para o backend:', projectData);
-
     this.projectsService.create(projectData).subscribe({
       next: (createdProject: any) => {
-        console.log('Board criado com sucesso:', createdProject);
-        
         // Mapear members corretamente
         let membersArray: string[] = [];
         if (Array.isArray(createdProject.members)) {
@@ -149,10 +154,6 @@ export class BoardsComponent implements OnInit {
         this.closeProjectModal();
       },
       error: (err) => {
-        console.error('Erro ao criar board:', err);
-        console.error('Status do erro:', err.status);
-        console.error('Mensagem do erro:', err.message);
-        
         if (err.status === 401) {
           this.errorMessage = 'Sua sessão expirou. Redirecionando para login...';
           localStorage.removeItem('access_token');

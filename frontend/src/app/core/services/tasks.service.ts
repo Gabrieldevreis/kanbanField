@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Task } from './columns.service';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TasksService {
-  private readonly API_URL = 'http://localhost:8001/columns';
+  private readonly API_URL = `${environment.apiUrl}/columns`;
 
   constructor(private http: HttpClient) {}
 

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { ConfigurationsComponent } from './configurations.component';
+import { ConfigurationsRoutingModule } from './configurations-routing.module';
 
 @NgModule({
   declarations: [
@@ -9,7 +9,7 @@ import { ConfigurationsComponent } from './configurations.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    ConfigurationsRoutingModule
   ],
   exports: [
     ConfigurationsComponent

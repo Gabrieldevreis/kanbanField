@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { KanbanComponent } from './kanban.component';
 import { ModalEditTasksComponent } from '../../shared/components/modal-edit-tasks/modal-edit-tasks.component';
+import { KanbanRoutingModule } from './kanban-routing.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,7 @@ import { ModalEditTasksComponent } from '../../shared/components/modal-edit-task
   ],
   imports: [
     CommonModule,
-    RouterModule,
+    KanbanRoutingModule,
     ReactiveFormsModule,
     FormsModule
   ],

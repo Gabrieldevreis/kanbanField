@@ -4,13 +4,14 @@ import { Observable, catchError, throwError } from 'rxjs';
 import { LoginDto } from '../models/login.dto';
 import { RegisterDto } from '../models/register.dto';
 import { AuthResponse } from '../models/auth-response.dto';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private readonly API_URL = 'http://localhost:8001/auth'; // ajuste para seu backend
+  private readonly API_URL = `${environment.apiUrl}/auth`;
 
   constructor(private http: HttpClient) {}
 

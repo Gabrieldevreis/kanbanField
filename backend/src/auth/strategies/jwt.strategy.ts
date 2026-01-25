@@ -6,6 +6,8 @@ import { PrismaService } from '../../prisma/prisma.service';
 interface JwtPayload {
   sub: string;
   email: string;
+  exp?: number;
+  iat?: number;
 }
 
 @Injectable()
@@ -32,7 +34,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
     // 2️⃣ Validar se usuário existe
     if (!user) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException('Usuário não encontrado');
     }
 
     // 3️⃣ Retorna usuário válido (fica em req.user)

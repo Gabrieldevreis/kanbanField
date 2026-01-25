@@ -66,11 +66,8 @@ export class RegisterComponent implements OnInit {
       password: this.signupForm.value.password
     };
 
-    console.log('Enviando dados de registro:', registerData);
-
     this.authService.register(registerData).subscribe({
       next: (response) => {
-        console.log('Resposta do registro:', response);
         // Mostrar mensagem de sucesso e redirecionar para login
         this.errorMessage = null;
         this.successMessage = 'Conta criada com sucesso! Redirecionando para login...';
@@ -87,7 +84,6 @@ export class RegisterComponent implements OnInit {
         }, 2000);
       },
       error: (err) => {
-        console.error('Erro no registro:', err);
         this.errorMessage = err.message || 'Erro ao criar conta. Tente novamente.';
         this.isLoading = false;
         // Atualizar ícones do feather após renderizar mensagem de erro

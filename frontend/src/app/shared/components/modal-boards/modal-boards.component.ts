@@ -81,11 +81,7 @@ export class ModalBoardsComponent {
   }
 
   createBoard(): void {
-    console.log('createBoard chamado, formulário válido:', this.form.valid);
-    console.log('Valores do formulário:', this.form.value);
-    
     if (this.form.invalid) {
-      console.log('Formulário inválido, erros:', this.form.errors);
       this.form.markAllAsTouched();
       // Mostrar erros específicos
       if (this.form.get('name')?.hasError('required')) {
@@ -112,7 +108,6 @@ export class ModalBoardsComponent {
       status: this.form.value.progress === 100 ? 'completed' : 'active'
     };
 
-    console.log('Projeto a ser criado:', project);
     this.create.emit(project);
     // Resetar formulário após emitir
     this.resetForm();
