@@ -6,6 +6,7 @@
     COPY backend/package.json backend/package-lock.json ./
     RUN npm install
     
+    COPY . .
     # Copia schema.prisma também
     COPY backend/prisma ./prisma
     COPY backend .
